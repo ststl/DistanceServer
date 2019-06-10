@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CalculateDistanceModelStoreContainer" CdmEntityContainer="CalculateDistanceEntities2">
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="CalculateDistanceModel.Cities">
+        <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="NameCity" ColumnName="NameCity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Search">
+      <EntityTypeMapping TypeName="CalculateDistanceModel.Search">
+        <MappingFragment StoreEntitySet="Search">
+          <ScalarProperty Name="distance" ColumnName="distance" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="KodCitySource" ColumnName="KodCitySource" />
+          <ScalarProperty Name="KodCityDestinision" ColumnName="KodCityDestinision" />
+          <ScalarProperty Name="NumOfSearches" ColumnName="NumOfSearches" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

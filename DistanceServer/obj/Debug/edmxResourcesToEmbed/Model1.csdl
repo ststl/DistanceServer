@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CalculateDistanceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cities">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameCity" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Search" Relationship="Self.FK__Search__KodCityD__49C3F6B7" FromRole="Cities" ToRole="Search" />
+    <NavigationProperty Name="Search1" Relationship="Self.FK__Search__KodCityS__48CFD27E" FromRole="Cities" ToRole="Search" />
+  </EntityType>
+  <EntityType Name="Search">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KodCitySource" Type="Int32" />
+    <Property Name="KodCityDestinision" Type="Int32" />
+    <Property Name="NumOfSearches" Type="Int32" />
+    <NavigationProperty Name="Cities" Relationship="Self.FK__Search__KodCityD__49C3F6B7" FromRole="Search" ToRole="Cities" />
+    <NavigationProperty Name="Cities1" Relationship="Self.FK__Search__KodCityS__48CFD27E" FromRole="Search" ToRole="Cities" />
+    <Property Name="distance" Type="Double" />
+  </EntityType>
+  <Association Name="FK__Search__KodCityD__49C3F6B7">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+    <End Role="Search" Type="Self.Search" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Search">
+        <PropertyRef Name="KodCityDestinision" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Search__KodCityS__48CFD27E">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+    <End Role="Search" Type="Self.Search" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Search">
+        <PropertyRef Name="KodCitySource" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CalculateDistanceEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cities" EntityType="Self.Cities" />
+    <EntitySet Name="Search" EntityType="Self.Search" />
+    <AssociationSet Name="FK__Search__KodCityD__49C3F6B7" Association="Self.FK__Search__KodCityD__49C3F6B7">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Search" EntitySet="Search" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Search__KodCityS__48CFD27E" Association="Self.FK__Search__KodCityS__48CFD27E">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Search" EntitySet="Search" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
